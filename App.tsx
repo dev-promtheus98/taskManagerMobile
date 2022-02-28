@@ -10,15 +10,19 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Provider } from 'react-redux';
 import TasksContainer from './src/components/TasksEpic/TasksContainer';
 import Header from './src/components/_Shared/Header';
+import store from './src/redux/store';
 
 const App = () => {
     return (
-        <SafeAreaView style={styles.container}>
-            <Header />
-            <TasksContainer />
-        </SafeAreaView>
+        <Provider store={store}>
+            <SafeAreaView style={styles.container}>
+                <Header />
+                <TasksContainer />
+            </SafeAreaView>
+        </Provider>
     );
 };
 

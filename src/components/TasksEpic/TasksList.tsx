@@ -5,16 +5,14 @@ import TaskTile from './TaskTile'
 
 type Props = {
     tasks: Tasks[],
-    onChangeStatus: (f: number)=>void,
-    onDeleteTask: (f: number)=>void,
 }
 
 type Render = {
     item: Tasks
 }
 
-const TasksList = ({ tasks, onChangeStatus, onDeleteTask }: Props) => {
-    const _renderItem = ({item}: Render) => <TaskTile task={item} onChangeStatus={onChangeStatus} onDeleteTask={onDeleteTask}></TaskTile>
+const TasksList = ({ tasks }: Props) => {
+    const _renderItem = ({item}: Render) => <TaskTile task={item} ></TaskTile>
     return (
         <FlatList
             data={tasks}

@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Button, StyleSheet, TextInput, View } from 'react-native'
+import { useDispatch } from "react-redux";
+import { addTask } from '../../redux/actions';
 
-type Props = {
-    onAddTask: (f: string)=>void
-}
+type Props = { }
 
-const TaskForm = ({onAddTask}: Props) => {
+const TaskForm = () => {
 
     const [title, setTitle] = useState('');
+    const dispatch = useDispatch();
 
     const _onChangeText = (value: any) => {
         setTitle(value);
@@ -15,7 +16,7 @@ const TaskForm = ({onAddTask}: Props) => {
 
     const _onPress = () => {
         if (title.length > 0) {
-            onAddTask(title);
+            dispatch(addTask(title));
             setTitle("");
         }
     }

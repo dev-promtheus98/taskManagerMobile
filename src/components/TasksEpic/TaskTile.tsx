@@ -1,21 +1,25 @@
 import React from 'react'
 import { View, Image, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { deleteTask, toggleTask } from '../../redux/actions'
 import { Tasks } from '../../types/Tasks.type'
 
 type Props = {
     task: Tasks,
-    onChangeStatus: (f: number)=>void,
-    onDeleteTask: (f: number)=>void,
 }
 
-const TaskTile = ({task, onChangeStatus, onDeleteTask}: Props) => {
+const TaskTile = ({task}: Props) => {
+    const dispatch = useDispatch();
 
     const _onPress = () =>{
-        onChangeStatus(task.id);
+        dispatch(toggleTask(task))
     }
 
     const _onDelete = () =>{
-        onDeleteTask(task.id);
+        console.log('====================================');
+        console.log("delete", task);
+        console.log('====================================');
+        dispatch(deleteTask(task))
     }
 
     const _showIcon = () => {
